@@ -1,10 +1,10 @@
 import React from "react";
 import { useState } from "react";
-function Player() {
+function Player({name}) {
   return (
     <div className="container-fluid border border-dark p-3 m-3">
       <div className="row justify-content-center">
-        {/* Render Name here */}
+        {name}
         <h2 className="text-center"></h2>
       </div>
       <div className="row justify-content-center">
