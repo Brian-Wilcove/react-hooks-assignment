@@ -51,9 +51,9 @@ function ScoreBoard() {
         </div>
       </div>
       <div className="row m-auto">
-        {players.map((player) => {
+        {players.map((player, index) => {
           return (
-            <div className="col-md-4">
+            <div className="col-md-4" key={index}>
               {/* Make sure to pass the unique id as a key */}
               <Player
                 key={player.id}
