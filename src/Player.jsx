@@ -1,6 +1,6 @@
 import React from "react";
 import { useState } from "react";
-function Player({name}) {
+function Player({name, removePlayer}) {
   const [score, setScore] = useState(0);
 
   function addPoint() {
@@ -34,6 +34,9 @@ function Player({name}) {
           </button>
         </div>
       </div>
+      <button className="btn btn-outline-danger w-100 mt-3" onClick={removePlayer}>
+            Remove Player
+          </button>
     </div>
   );
 }

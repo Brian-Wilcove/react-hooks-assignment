@@ -9,7 +9,17 @@ function ScoreBoard() {
  function addPlayer() {
   let playerName = inputRef.current.value || undefined;
   setPlayers([...players, {name: playerName, id: Date.now() }]);
+  inputRef.current.value = "";
  }
+
+ function removePlayer(id) {
+  setPlayers(
+    players.filter((player) => {
+      return player.id !== id;
+    })
+  )
+ }
+
   return (
     <div className="container">
       <div className="row  text-center">
@@ -17,12 +27,12 @@ function ScoreBoard() {
       </div>
       <div className="row">
         <div className="col-md-4 m-auto">
-          <div class="input-group mb-3">
+          <div className="input-group mb-3">
             {/* Modify input so that it is either connected to a ref or some kind of input state */}
             <input
               type="text"
               ref={inputRef}
-              class="form-control"
+              className="form-control"
               placeholder="New Player Name"
               aria-label="New Player Name"
               aria-describedby="addPlayer"
@@ -30,7 +40,7 @@ function ScoreBoard() {
             />
             {/* add Add Player event handling to this button */}
             <button
-              class="btn btn-outline-primary"
+              className="btn btn-outline-primary"
               type="button"
               id="addPlayer"
               onClick={addPlayer}
@@ -48,6 +58,7 @@ function ScoreBoard() {
               <Player
                 key={player.id}
                 name={player.name}
+                removePlayer={() => removePlayer(player.id)}
                 // Anonymous arrow function that we can hold off activating
                 // until the user clicks a button inside of the Player component
               />
